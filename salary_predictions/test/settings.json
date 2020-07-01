@@ -1,0 +1,6 @@
+{
+    "train_data_path": "./data/Train.csv",
+    "valid_data_path": "./data/Valid.csv",
+    "model_path": "./data/random_forest.pickle",
+    "prediction_path": "./data/random_forest_benchmark.csv"
+}
