@@ -1,76 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
+==
+<!-- {{location|length}} -->
+
+==
+
 <form action="/predict" method="POST" class="tm-search-form tm-section-pad-2">
     <div class="form-row tm-search-form-row">
         <div class="form-group tm-form-element tm-form-element-100">
             <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
-            <input name="city" type="text" class="form-control" id="inputCity" placeholder="Type your Location...">
+            <!-- <input name="city" type="text" class="form-control" id="inputCity" placeholder="Type your Location...">  -->
+            <select name="City" class="form-control tm-select" id="City">
+                {% for loc in location %}
+                <option value="{{loc}}">{{loc}}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="form-group tm-form-element tm-form-element-2">
-          <select name="contract_time" class="form-control tm-select" id="contract_time">
-              <option value="">Contract Time</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-          </select>
-          <i class="fa fa-2x fa-id-card-o tm-form-element-icon"></i>
-      </div>
+            <input name="JobTitle" type="text" class="form-control" id="JobTitle" placeholder="Enter Job Tile">
+            <i class="fa fa-2x fa-id-card-o tm-form-element-icon"></i>
+        </div>
         <!-- <div class="form-group tm-form-element tm-form-element-50">
             <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
             <input name="check-out" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
         </div>
     </div> -->
-    <div class="form-row tm-search-form-row">
-        <div class="form-group tm-form-element tm-form-element-2">                                            
-            <select name="category" class="form-control tm-select" id="category">
-                <option value="">Category</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <i class="fa fa-2x fa-user tm-form-element-icon"></i>
+        <div class="form-group tm-form-element tm-form-element-2">
+            <textarea name="JobDesc" type="text" class="form-control" id="JobDesc"
+                placeholder="Enter Job Description"></textarea>
+            <i class="fa fa-2x fa-id-card-o tm-form-element-icon"></i>
         </div>
-        <div class="form-group tm-form-element tm-form-element-2">                                            
-            <select name="company" class="form-control tm-select" id="company">
-                <option value="">Company</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
+    </div>
+    <div class="form-row tm-search-form-row">
+        <div class="form-group tm-form-element tm-form-element-2">
+            <select name="Company" class="form-control tm-select" id="Company">
+                {% for comp in company %}
+                <option value="{{comp}}">{{comp}}</option>
+                {% endfor %}
             </select>
             <i class="fa fa-building tm-form-element-icon tm-form-element-icon-small"></i>
         </div>
         <div class="form-group tm-form-element tm-form-element-2">
             <select name="contract" class="form-control tm-select" id="contract">
                 <option value="">Contract Type</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <option value="1">permanent'</option>
+                <option value="2">contract</option>
+            
             </select>
             <i class="fa fa-2x fa-id-card tm-form-element-icon"></i>
         </div>
         <div class="form-group tm-form-element tm-form-element-2">
             <button type="submit" class="btn btn-primary tm-btn-search">Check Prediction</button>
         </div>
-      </div>
-      <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
-          <p class="tm-margin-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <a href="#" class="ie-10-ml-auto ml-auto mt-1 tm-font-semibold tm-color-primary">Need Help?</a>
-      </div>
+    </div>
+    <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
+        <p class="tm-margin-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="#" class="ie-10-ml-auto ml-auto mt-1 tm-font-semibold tm-color-primary">Need Help?</a>
+    </div>
 </form>
 {% endblock content %}
