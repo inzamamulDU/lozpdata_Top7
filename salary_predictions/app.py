@@ -2,6 +2,13 @@ from flask import Flask, render_template, request
 import pandas as pd
 
 import pickle
+from features import FeatureMapper, SimpleTransform
+import numpy as np
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.pipeline import Pipeline
+import re
+
 
 
 app=Flask(__name__)
@@ -10,9 +17,14 @@ location = pd.read_csv('location_norm.csv')
 location=list(location.values.tolist())
 company = pd.read_csv('company_names.csv')
 company = list(company[1:].values.tolist())
+import pickle
+import nltk
+nltk.download('wordnet')
 
 filename = './test/data/random_forest.pickle'
-classifier = pickle.load( open(filename,"rb"))
+regressor = pickle.load( open(filename,"rb"))
+
+
 
 @app.route('/')
 def home():
@@ -36,4 +48,4 @@ def predict():
 
 
 if __name__ == '__main__':
-	  app.run(debug=True)
+	app.run(debug=True)
